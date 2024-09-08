@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="default-layouts h-screen">
     <AppHeader />
     <slot />
     <AppFooter />

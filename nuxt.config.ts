@@ -1,17 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  modules: ["@nuxt/ui", "@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+
   runtimeConfig: {
     public: {
-      openWeatherApiKey: 'fdf0c24b63798e2c7784b376d2d74064' || '', // 使用默认值防止 undefined
-    }
-  },
-  css: ['~/assets/css/main.css'],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+      amapApiKey: process.env.NUXT_PUBLIC_AMAP_API_KEY || "", // 高德 API Key
     },
   },
-})
+
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+
+  piniaPersistedstate: {
+    storage: "localStorage",
+  },
+
+  css: ["/assets/css/main.css"],
+  devtools: { enabled: true },
+  compatibilityDate: "2024-09-07",
+});
